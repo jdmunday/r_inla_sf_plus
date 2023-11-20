@@ -2,7 +2,7 @@
 FROM rocker/r-base:latest
 
 # Set a working directory
-WORKDIR /usr/src/app
+WORKDIR /docker/home
 
 # Install system dependencies
 RUN apt-get update && \
@@ -13,7 +13,7 @@ RUN apt-get update && \
        libudunits2-dev
 
 # Install R packages
-#RUN R -e "install.packages(c('data.table', 'tidyverse', 'ISOweek', 'inlabru', 'sf', 'splines', #'cowplot', 'flextable', 'spdep', 'jsonlite', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
+RUN R -e "install.packages(c('data.table', 'tidyverse', 'ISOweek', 'inlabru', 'sf', 'splines', 'cowplot', 'flextable', 'spdep', 'jsonlite', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
 
 # Install rINLA separately due to additional system dependencies
 # Define the version/repo of INLA to use. Choose either: 'stable' or 'testing'
