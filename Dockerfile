@@ -13,16 +13,16 @@ RUN apt-get update && \
        libudunits2-dev
 
 # Install R packages
-#RUN R -e "install.packages(c('data.table', 'tidyverse', 'ISOweek', 'sf', 'splines', 'cowplot', 'flextable', 'spdep', 'jsonlite', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
+RUN R -e "install.packages(c('data.table', 'tidyverse', 'sf', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
 
 # Install rINLA separately due to additional system dependencies
 # Define the version/repo of INLA to use. Choose either: 'stable' or 'testing'
-#ARG INLA_REPO='stable'
-#ARG TIMESTAMP
+ARG INLA_REPO='testing'
+ARG TIMESTAMP
 
 # Install INLA
-#RUN Rscript -e "install.packages('INLA', repos=c('https://cloud.r-project.org/', INLA='https://inla.r-inla-download.org/R/$INLA_REPO'), dep=TRUE)" && \
-#   rm -rf /tmp/*
+RUN Rscript -e "install.packages('INLA', repos=c('https://cloud.r-project.org/', INLA='https://inla.r-inla-download.org/R/$INLA_REPO'), dep=TRUE)" && \
+   rm -rf /tmp/*
 
 # Set environment variables
 ENV LC_ALL=C.UTF-8
