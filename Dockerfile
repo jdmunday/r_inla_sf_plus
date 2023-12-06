@@ -13,7 +13,7 @@ RUN apt-get update && \
        libudunits2-dev
 
 # Install R packages
-RUN R -e "install.packages(c('data.table', 'tidyverse', 'sf', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
+RUN R -e "install.packages(c('pacman', 'data.table', 'tidyverse', 'sf', 'cowplot', 'spdep', 'jsonlite', 'splines', 'ISOweek', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
 
 # Install rINLA separately due to additional system dependencies
 # Define the version/repo of INLA to use. Choose either: 'stable' or 'testing'
