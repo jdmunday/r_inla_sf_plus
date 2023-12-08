@@ -12,12 +12,13 @@ RUN apt-get update && \
        libgeos-dev \
        libudunits2-dev \ 
        libmagick++-dev \
+       libnode-dev\
        && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
        && apt-get install -y nodejs \
        && rm -rf /var/lib/apt/lists/*
 
 # Install R packages
-RUN R -e "install.packages(c('pacman', 'data.table', 'tidyverse', 'sf', 'rmapshaper', 'flextable', 'cowplot', 'spdep', 'jsonlite', 'splines', 'ISOweek', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
+RUN R -e "install.packages(c('pacman', 'data.table', 'tidyverse', 'sf', 'rmapshaper', 'cowplot', 'spdep', 'jsonlite', 'splines', 'ISOweek', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
 
 # Install rINLA separately due to additional system dependencies
 # Define the version/repo of INLA to use. Choose either: 'stable' or 'testing'
