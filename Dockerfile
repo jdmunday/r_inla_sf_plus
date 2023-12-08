@@ -10,7 +10,11 @@ RUN apt-get update && \
        libgdal-dev \
        libproj-dev \
        libgeos-dev \
-       libudunits2-dev
+       libudunits2-dev \ 
+       libmagick++-dev \
+       && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+       && apt-get install -y nodejs \
+       && rm -rf /var/lib/apt/lists/*
 
 # Install R packages
 RUN R -e "install.packages(c('pacman', 'data.table', 'tidyverse', 'sf', 'rmapshaper', 'flextable', 'cowplot', 'spdep', 'jsonlite', 'splines', 'ISOweek', 'scales', 'units', 'scoringutils'), dependencies=TRUE)"
